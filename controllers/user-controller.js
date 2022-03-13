@@ -49,7 +49,7 @@ const userController = {
   // ::POST:: create a user
   createUser({ body }, res) {
     User.create(body)
-      .then((dbUserData) => res.json(dbUserData))
+      .then((dbUserData) => res.json(dbUserData).select("-__v"))
       .catch((err) => res.status(400).json(err));
   },
 
@@ -59,7 +59,7 @@ const userController = {
       { _id: params.userId },
       { $push: { friends: params.friendId } },
       { new: true }
-      )
+    )
       .then((dbUserData) => {
         if (!dbUserData) {
           res.status(404).json({ message: "No user found with this id!" });
@@ -91,7 +91,7 @@ const userController = {
           res.status(404).json({ message: "No user found with this id!" });
           return;
         }
-        res.json(dbUserData);
+        res.json(dbUserData, { message: "User has been deleted!" });
       })
       .catch((err) => res.status(400).json(err));
   },
