@@ -49,7 +49,7 @@ const userController = {
   // ::POST:: create a user
   createUser({ body }, res) {
     User.create(body)
-      .then((dbUserData) => res.json(dbUserData).select("-__v"))
+      .then((dbUserData) => res.json(dbUserData))
       .catch((err) => res.status(400).json(err));
   },
 
@@ -91,7 +91,7 @@ const userController = {
           res.status(404).json({ message: "No user found with this id!" });
           return;
         }
-        res.json(dbUserData, { message: "User has been deleted!" });
+        res.json(dbUserData);
       })
       .catch((err) => res.status(400).json(err));
   },
