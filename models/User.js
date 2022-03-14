@@ -1,5 +1,6 @@
-const { Schema, model, Types } = require("mongoose");
+const { Schema, model } = require("mongoose");
 
+// User Model Schema (username, email, thoughts, friends)
 const UserSchema = new Schema(
   {
     username: {
@@ -12,7 +13,7 @@ const UserSchema = new Schema(
       type: String,
       unique: true,
       required: "Email is Required",
-      match: [/.+@.+\..+/, "Please enter a valid e-mail address"],
+      match: [/.+@.+\..+/, "Please enter a valid e-mail address"], // regex validation 
     },
     thoughts: [
       { 

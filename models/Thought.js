@@ -1,6 +1,7 @@
 const { Schema, model, Types } = require("mongoose");
 const dateFormat = require("../utils/dateFormat.js");
 
+// Reaction Subdocument (reactionId, reactionBody, username, createdAt)
 const reactionSchema = new Schema(
   {
     reactionId: {
@@ -22,7 +23,7 @@ const reactionSchema = new Schema(
     createdAt: {
       type: Date,
       default: Date.now,
-      get: (createdAtVal) => dateFormat(createdAtVal),
+      get: (createdAtVal) => dateFormat(createdAtVal), // date formatter 
     },
   },
   {
@@ -32,6 +33,7 @@ const reactionSchema = new Schema(
   }
 );
 
+// Thought Model Schema (thoughtText, createdAt, username, reactions)
 const ThoughtSchema = new Schema(
   {
     thoughtText: {
@@ -45,7 +47,7 @@ const ThoughtSchema = new Schema(
     createdAt: {
       type: Date,
       default: Date.now,
-      get: (createdAtVal) => dateFormat(createdAtVal),
+      get: (createdAtVal) => dateFormat(createdAtVal), // date formatter 
     },
     username: {
       type: String,
@@ -62,6 +64,7 @@ const ThoughtSchema = new Schema(
   }
 );
 
+// Virtual for displaying amount of reactions for a thought
 ThoughtSchema.virtual("reactionCount").get(function () {
   return this.reactions.length;
 });

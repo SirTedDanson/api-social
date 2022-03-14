@@ -78,8 +78,12 @@ const userController = {
           res.status(404).json({ message: "No user found with this id!" });
           return;
         }
-        res.json(dbUserData);
+        // update user associated thought username
+        return Thought.updateMany({
+          username: dbUserData.username,
+        });
       })
+      .then((dbUserData) => res.json(dbUserData))
       .catch((err) => res.status(400).json(err));
   },
 
@@ -91,11 +95,12 @@ const userController = {
           res.status(404).json({ message: "No user found with this id!" });
           return;
         }
-        console.log(dbUserData.username);
+        // delete user associated thoughts
         return Thought.deleteMany({
           username: { $in: [dbUserData.username] },
-        }).then(res.json(dbUserData));
+        });
       })
+      .then((dbUserData) => res.json(dbUserData))
       .catch((err) => res.status(400).json(err));
   },
 
