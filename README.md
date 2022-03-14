@@ -16,7 +16,7 @@
     <a href="https://github.com/SirTedDanson/api-social"><strong>Project Documents »</strong></a>
     <br />
     <br />
-    <a href="">View Demo</a>
+    <a href="https://watch.screencastify.com/v/wMc5TwRMgPmaxQPtBTZk">View Demo</a>
     ·
     <a href="https://github.com/SirTedDanson/api-social/issues">Report Bug</a>
     ·
@@ -234,7 +234,7 @@
 
   ## Tests
 
-  - Building test suite. [View Demonstration]()
+  - Building test suite. [View Demonstration](https://watch.screencastify.com/v/wMc5TwRMgPmaxQPtBTZk)
 
   <p align="right">(<a href="#top">back to top</a>)</p>
 
